@@ -1,0 +1,50 @@
+.pagination {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  gap: 40px;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin: 40px auto 0;
+}
+
+.ellipsis {
+  color: white;
+}
+
+.page {
+  user-select: none;
+  color: white;
+  cursor: pointer;
+  border-radius: 6px;
+  padding: 8px 14px;
+  font-weight: bold;
+}
+
+.previous,
+.next {
+  user-select: none;
+  cursor: pointer;
+  border: 2px solid white;
+  padding: 6px 16px;
+  border-radius: 22px;
+  min-width: 90px;
+  font-weight: bold;
+  color: white;
+}
+
+.previous:hover,
+.next:hover {
+  color: rgb(74, 74, 74);
+  background-color: white;
+}
+
+.active,
+.page:hover {
+  border: 2px solid white;
+  border-radius: 50%;
+  padding: 8px 12px;
+  color: rgb(74, 74, 74);
+  background-color: white;
+}
