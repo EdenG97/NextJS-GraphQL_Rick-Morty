@@ -1,14 +1,31 @@
-import { gql } from "@apollo/client";
-import {
-  GetStaticPaths,
-  GetStaticProps,
-  NextPage,
-} from "next";
-import { useEffect, useState } from "react";
 import CharactersDetail from "../../components/CharactersDetail";
 import client from "../../graphql/client";
+import { gql } from "@apollo/client";
+import { GetServerSideProps, NextPage } from "next";
+import { useEffect, useState } from "react";
 
-const Detail: NextPage<any> = ({ data }: any) => {
+type Data = {
+  data: {
+    character: {
+      id: string;
+      image: string;
+      name: string;
+      gender: string;
+      status: string;
+      species: string;
+      location: {
+        name: string;
+      };
+      episode: {
+        name: string;
+        air_date: string;
+        episode: string;
+      }[];
+    };
+  };
+};
+
+const Detail: NextPage<any> = ({ data }: Data) => {
   const [dataChar, setDataChar] = useState(data);
 
   useEffect(() => {
@@ -18,61 +35,38 @@ const Detail: NextPage<any> = ({ data }: any) => {
   return <CharactersDetail charactersData={dataChar} />;
 };
 
-export const getStaticPaths: GetStaticPaths = async () => {
-  const { data } = await client.query({
-    query: gql`
-      query {
-        characters {
-          results {
+export const getServerSideProps: GetServerSideProps =
+  async (context) => {
+    const ids = context.params?.characterId;
+    const { data } = await client.query({
+      query: gql`
+        query Detail($id: ID!) {
+          character(id: $id) {
             id
-          }
-        }
-      }
-    `,
-  });
-
-  const path = data.characters.results[0].id;
-
-  return {
-    paths: [
-      {
-        params: { characterId: path },
-      },
-    ],
-    fallback: "blocking",
-  };
-};
-
-export const getStaticProps: GetStaticProps = async (
-  context
-) => {
-  const ids = context.params?.characterId;
-  const { data } = await client.query({
-    query: gql`
-      query Detail($id: ID!) {
-        character(id: $id) {
-          id
-          image
-          name
-          gender
-          status
-          species
-          episode {
+            image
             name
-            air_date
-            episode
+            gender
+            status
+            species
+            location {
+              name
+            }
+            episode {
+              name
+              air_date
+              episode
+            }
           }
         }
-      }
-    `,
-    variables: { id: ids },
-  });
+      `,
+      variables: { id: ids },
+    });
 
-  return {
-    props: {
-      data,
-    },
+    return {
+      props: {
+        data,
+      },
+    };
   };
-};
 
 export default Detail;

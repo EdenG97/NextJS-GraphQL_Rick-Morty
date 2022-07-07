@@ -1,0 +1,21 @@
+.footer {
+  background-color: rgba(5, 5, 5, 0.221);
+  text-align: center;
+  height: 244px;
+  padding-top: 44px;
+}
+
+.footer h2 {
+  color: bisque;
+  margin: 0;
+}
+
+.footer ul {
+  list-style: none;
+  display: flex;
+  gap: 10px;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
