@@ -1,3 +1,4 @@
+import BackButton from "./charactersdetails-components/BackButton";
 import CharDetail from "./charactersdetails-components/CharDetail";
 import CharEpisode from "./charactersdetails-components/CharEpisode";
 
@@ -27,6 +28,7 @@ const CharactersDetail = ({
 }: Data): JSX.Element => {
   return (
     <div>
+      <BackButton />
       <CharDetail charactersData={charactersData} />
       <CharEpisode charactersEpisode={charactersData} />
     </div>
