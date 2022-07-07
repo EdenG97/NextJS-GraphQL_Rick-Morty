@@ -1,7 +1,7 @@
 import classes from "./CharactersLists.module.css";
 import Paginate from "./ui/Paginate";
 import LoadingSpinner from "./ui/LoadingSpinner";
-import CharLists from "./ui/characterslists-components/CharLists";
+import CharLists from "./characterslists-components/CharLists";
 import { useState } from "react";
 import { useCharacters } from "../hooks/useCharacters";
 
