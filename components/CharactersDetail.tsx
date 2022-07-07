@@ -1,23 +1,34 @@
-type Episode = {
-  name: string;
-  air_date: string;
-  episode: string;
+import CharDetail from "./charactersdetails-components/CharDetail";
+import CharEpisode from "./charactersdetails-components/CharEpisode";
+
+type Data = {
+  charactersData: {
+    character: {
+      id: string;
+      image: string;
+      name: string;
+      gender: string;
+      status: string;
+      species: string;
+      location: {
+        name: string;
+      };
+      episode: {
+        name: string;
+        air_date: string;
+        episode: string;
+      }[];
+    };
+  };
 };
 
-type Char = {
-  id: string;
-  image: string;
-  name: string;
-  gender: string;
-  status: string;
-  species: string;
-  episode: Episode;
-};
-
-const CharactersDetail = ({ charactersData }: any) => {
+const CharactersDetail = ({
+  charactersData,
+}: Data): JSX.Element => {
   return (
     <div>
-      <h1>{charactersData.character.name}</h1>
+      <CharDetail charactersData={charactersData} />
+      <CharEpisode charactersEpisode={charactersData} />
     </div>
   );
 };
