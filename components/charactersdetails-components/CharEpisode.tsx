@@ -1,5 +1,5 @@
-import { useState } from "react";
 import classes from "./CharEpisode.module.css";
+import { useState } from "react";
 
 type Episode = {
   charactersEpisode: {

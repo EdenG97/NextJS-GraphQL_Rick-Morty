@@ -1,5 +1,5 @@
-import React, { Fragment } from "react";
 import Footer from "./Footer";
+import React, { Fragment } from "react";
 
 type Children = {
   children: React.ReactNode;

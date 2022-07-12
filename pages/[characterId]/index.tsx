@@ -1,8 +1,9 @@
 import CharactersDetail from "../../components/CharactersDetail";
 import client from "../../graphql/client";
+import Head from "next/head";
 import { gql } from "@apollo/client";
 import { GetServerSideProps, NextPage } from "next";
-import { useEffect, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 
 type Data = {
   data: {
@@ -25,14 +26,21 @@ type Data = {
   };
 };
 
-const Detail: NextPage<any> = ({ data }: Data) => {
+const Detail: NextPage<Data> = ({ data }: Data) => {
   const [dataChar, setDataChar] = useState(data);
 
   useEffect(() => {
     setDataChar(data);
   }, [data]);
 
-  return <CharactersDetail charactersData={dataChar} />;
+  return (
+    <Fragment>
+      <Head>
+        <title>{dataChar.character.name}</title>
+      </Head>
+      <CharactersDetail charactersData={dataChar} />
+    </Fragment>
+  );
 };
 
 export const getServerSideProps: GetServerSideProps =
