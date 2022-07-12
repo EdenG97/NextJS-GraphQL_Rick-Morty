@@ -10,6 +10,7 @@ const Footer = (): JSX.Element => {
           <li>
             <Image
               src="/footer-img/Next.png"
+              alt="NextJS"
               width={250}
               height={120}
             />
@@ -17,6 +18,7 @@ const Footer = (): JSX.Element => {
           <li>
             <Image
               src="/footer-img/TypeScript.png"
+              alt="TypeScript"
               width={250}
               height={120}
             />
@@ -24,6 +26,7 @@ const Footer = (): JSX.Element => {
           <li>
             <Image
               src="/footer-img/GraphQL.png"
+              alt="GraphQL - Apollo Client"
               width={250}
               height={120}
             />

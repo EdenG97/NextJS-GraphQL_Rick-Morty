@@ -31,6 +31,7 @@ const CharLists = ({ data }: Data): JSX.Element => {
             >
               <Image
                 src={char.image}
+                alt={char.name}
                 width={400}
                 height={400}
                 priority

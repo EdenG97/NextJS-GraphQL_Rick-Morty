@@ -24,6 +24,7 @@ const CharDetail = ({
     <div className={classes["detail-container"]}>
       <Image
         src={charactersData.character.image}
+        alt={charactersData.character.name}
         width={250}
         height={250}
         priority
